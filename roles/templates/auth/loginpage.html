@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSave</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'auth/css/style.css' %}">
+</head>
+<body class="login-body">
+    <!-- Grid Background -->
+    <div class="grid-overlay"></div>
+    <div class="tint-overlay"></div>
+    <div class="login-container">
+        <div class="glass-card login-card">
+
+            <div class="login-header">
+                <div class="shield-icon">
+                    <!-- Lucide Shield Check Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-3 5.99-5.11a2 2 0 0 1 2.02 0C15 2 17 4 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <h2>SafeSave</h2>
+                <p>STORAGE SAFETY MONITORING SYSTEM</p>
+            </div>
+            <!-- The Form -->
+            <form id="login-form" class="login-form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+                <div class="input-group">
+                    <label for="operator-id">Operator Authorization Email</label>
+                    <div class="input-wrapper">
+                        <!-- Lucide User Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <input type="text" id="operator-id" name="email" placeholder="Enter authorized ID" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="access-key">Access Key</label>
+                    <div class="input-wrapper">
+                        <!-- Lucide Lock Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="input-icon lucide lucide-lock"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <input type="password" id="access-key" name="password" placeholder="" value="demo-access" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary login-btn">Initialize System</button>
+            </form>
+            <div class="login-footer">
+                <p>Warning: Unauthorized access to robot sensor telemetry is strictly prohibited. All sessions are logged and monitored by central security.</p>
+            </div>
+        </div>
+    </div>

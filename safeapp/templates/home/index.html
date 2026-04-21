@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSave | Static Version</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h1 class="neon-text">SafeSave</h1>
+            <nav>
+                <a href="{% url 'home' %}"
+                class="{% if request.path == '/' %}active{% endif %}">
+                    Home
+                </a>
+
+                <a href="{% url 'alarms' %}"
+                class="{% if '/alarms/' in request.path %}active{% endif %}">
+                    Alarm Logs
+                </a>
+
+                <a href="{% url 'journal' %}"
+                class="{% if '/journal/' in request.path %}active{% endif %}">
+                    Journal
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+        {% if request.user.is_authenticated %}
+            <!-- <div class="user-block" onclick=location.href="{% url 'profile' %}">
+                <p class="label">Current Operator</p>
+                <p class="user-id">{{ request.user.username }}</p>
+            </div> -->
+            <p class="label">Current Operator</p>
+            <a href="{% url 'profile' %}" class="user-block">
+                <p class="user-id">{{ request.user.username }}</p>
+            </a>
+        {% endif %}
+
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">
+                ⏻ Sign Out
+            </button>
+        </form>
+
+        <div class="system-status">
+            <div class="status-line">
+                <div class="dot"></div>
+                <span>SYSTEM ONLINE</span>
+            </div>
+        </div>
+    </div>
+        </aside>
+    <main class="main-content">
+    {% block content %}
+    {% endblock %}
+    </main>
+    </div>
+
+    <script src="{% static 'home/js/script.js' %}"></script>
+</body>
+</html>

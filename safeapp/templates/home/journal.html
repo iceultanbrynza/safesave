@@ -1,0 +1,53 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+
+            <header>
+                <h2>Safety Module Journal</h2>
+                <p id="last-update">Updates every 1 minute</p>
+            </header>
+
+            <div id="sensor-grid" class="sensor-grid">
+            </div>
+
+            <form method="POST" action="{% url 'select_robot' %}?next=journal" class="robot-selector">
+    {% csrf_token %}
+
+            <select name="robot_id">
+                    {% for robot in robots %}
+                        <option value="{{ robot.id }}"
+                            {% if robot.id == selected %}selected{% endif %}>
+                            {{ robot.name }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="btn">Select robot</button>
+            </form>
+
+            <section class="card" style="margin-top: 2rem">
+                <h3>Journal</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Situation</th>
+                            <th>Value</th>
+                            <th>Situation</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in events %}
+                        <tr>
+                            <td>{{ event.created_at }}</td>
+                            <td>{{ event.sensor }}</td>
+                            <td>{{ event.value }}</td>
+                            <td>{{ event.situation }}</td>
+                            <td>{{ event.status }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </section>
+{% endblock %}

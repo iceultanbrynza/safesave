@@ -1,0 +1,280 @@
+/* Sentinel Static Design System */
+:root {
+  --bg: hsl(220, 15%, 10%);
+  --card: hsl(220, 15%, 14%);
+  --primary: hsl(190, 90%, 50%);
+  --destructive: hsl(0, 85%, 60%);
+  --success: hsl(150, 70%, 45%);
+  --text: hsl(210, 20%, 90%);
+  --text-muted: hsl(215, 20%, 60%);
+  --border: hsl(215, 20%, 25%);
+
+  --font-sans: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* =========================================
+   LOGIN PAGE SPECIFIC STYLES
+   ========================================= */
+
+.login-body {
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Grid Background matches the React Tailwind grid-bg class */
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-size: 40px 40px;
+    background-image:
+      linear-gradient(to right, hsla(215, 20%, 25%, 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, hsla(215, 20%, 25%, 0.4) 1px, transparent 1px);
+    z-index: 1;
+}
+
+/* Tint overlay matching primary/5 in React */
+.tint-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: hsla(190, 90%, 50%, 0.05);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 448px;
+    padding: 1rem;
+    animation: zoomIn 0.5s ease-out forwards;
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.glass-card {
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.login-card {
+    padding: 2rem;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.shield-icon {
+    margin: 0 auto 1rem;
+    height: 64px;
+    width: 64px;
+    background-color: rgba(0, 242, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+    color: var(--primary);
+}
+
+.login-header h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 0.5rem 0;
+}
+
+.login-header p {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-group label {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.input-wrapper input {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding-left: 2.5rem;
+    padding-right: 1rem;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.input-wrapper input::placeholder {
+    color: rgba(139, 148, 158, 0.5);
+}
+
+.login-btn {
+    width: 100%;
+    height: 3rem;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.login-btn:hover {
+    background-color: rgba(0, 242, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.login-footer {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(48, 54, 61, 0.5);
+    text-align: center;
+}
+
+.login-footer p {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: rgba(139, 148, 158, 0.5);
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* =========================================
+   DASHBOARD STYLES
+   ========================================= */
+
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  background: #010409;
+  border-right: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.sensor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-normal { background: var(--success); }
+.status-critical { background: var(--destructive); box-shadow: 0 0 10px var(--destructive); }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  color: var(--primary);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+
+td {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.btn {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.neon-text {
+  text-shadow: 0,5px var(--primary);
+}

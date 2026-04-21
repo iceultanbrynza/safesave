@@ -1,0 +1,39 @@
+{% extends "home/index.html" %}
+{% load static %}
+{% block content %}
+    <div class="dashboard">
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header style="margin-bottom: 2rem;">
+                <h2 style="font-size: 2rem; margin: 0; font-family: var(--font-sans);">Command Center</h2>
+                <p style="color: var(--text-muted); font-family: var(--font-mono);">Global overview and recent dispatches</p>
+            </header>
+
+
+                <!-- NEWS SECTION -->
+                <section class="card">
+                    <h3 style="margin-top: 0; color: var(--primary); font-family: var(--font-sans);">System News & Bulletins</h3>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <div class="news-date">2026-04-16 09:00 UTC</div>
+                            <h4 class="news-title">Firmware v4.1 Deployment Complete</h4>
+                            <p class="news-body">All active units in Sector 4 and 5 have successfully received the v4.1 over-the-air update. Neural pathway synchronization is stable and telemetry is nominal.</p>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">2026-04-15 14:30 UTC</div>
+                            <h4 class="news-title">Scheduled Maintenance in Sector 7</h4>
+                            <p class="news-body">Routine recalibration of heavy-lifter droids will occur tomorrow. Expect minor telemetry delays and sensor dropouts during the maintenance window.</p>
+                        </div>
+                        <div class="news-item">
+                            <div class="news-date">2026-04-14 11:15 UTC</div>
+                            <h4 class="news-title">New Safety Protocol Enforced</h4>
+                            <p class="news-body">Operators are reminded to check the updated safety guidelines regarding proximity to automated loading bays. Ensure physical barriers are locked.</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+{% endblock %}
