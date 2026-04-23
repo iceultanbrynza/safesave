@@ -43,10 +43,14 @@
                             <td>{{ alarm.get_situation_display }}</td>
                             <td><span class="status-indicator status-critical"></span> {{ alarm.status }}</td>
                             <td>
-                                <label class="neon-checkbox">
-                                    <input type="button">
-                                    <span></span>
-                                </label>
+                                <form method="post" action="{% url 'acknowledge' alarm.id %}">
+                                    {% csrf_token %}
+                                    <label class="neon-checkbox">
+                                        <button type="submit">
+                                            <span></span>
+                                        </button>
+                                    </label>
+                                </form>
                             </td>
                         </tr>
                         {% endfor %}
